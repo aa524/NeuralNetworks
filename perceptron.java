@@ -1,29 +1,27 @@
+import org.apache.commons.math3.linear.*;
 class perceptron {
 //binary inputs x1, x2, x3, ..., xn
-boolean[] inputs;
-double[] weights;
-double threshold;
+ArrayRealVector inputs;
+ArrayRealVector weights;
+double bias;
 boolean output;
 
-public perceptron(boolean[] inputs, double[] weights, double threshold) {
+public perceptron(ArrayRealVector inputs, ArrayRealVector weights, double bias) {
 this.inputs= inputs;
 this.weights= weights;
-this.threshold=threshold;
+this.bias=bias;
 }
 
 public static void main(String[] args) {
-perceptron p = new perceptron(new boolean[]{false, true, true}, new double[]{6, 2, 2}, 3);
-System.out.println(calculateOutput(p));
+
+perceptron p = new perceptron(new ArrayRealVector(new double[]{0, 1, 1}), new ArrayRealVector(new double[]{6, 2, 2}), 3);
+System.out.println(p.calculateOutput(p));
 }
 
 
-private static boolean calculateOutput(perceptron p) {
-double sum=0;
-for (int i=0; i<p.inputs.length; i++) {
-	int inputInt= p.inputs[i] ? 1:0;
-	sum+= inputInt*p.weights[i];
-	}
-return (sum > p.threshold) ? true:false;
-
+private boolean calculateOutput(perceptron p) {
+double output= p.inputs.dotProduct(p.weights) + p.bias;
+this.output= (output <= 0) ? false: true;
+return this.output;
 }
 }
