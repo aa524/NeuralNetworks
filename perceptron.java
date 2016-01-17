@@ -27,7 +27,7 @@ this.output= this.calculateOutput();
 }
 
 public static void main(String[] args) {
-
+//example usage
 perceptron p = new perceptron(new ArrayRealVector(new double[]{0, 1, 1}), new ArrayRealVector(new double[]{6, 2, 2}), -4);
 perceptron q = new perceptron(new ArrayRealVector(new double[]{0, 1, 1}), new ArrayRealVector(new double[]{6, 2, 2}), 3);
 perceptron r = new perceptron(new ArrayRealVector(new double[]{0, 1, 1}), new ArrayRealVector(new double[]{6, 2, 2}), 3);
